@@ -3,19 +3,19 @@ default: &default
   encoding: utf8
   pool: 5
   timeout: 5000
-  database: bench_bnb_development
+  database: study_spot_development
 
 development:
   <<: *default
-  database: bench_bnb_development
+  database: study_spot_development
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: bench_bnb_test
+  database: study_spot_test
 
 production:
   <<: *default
-  database: bench_bnb_production
+  database: study_spot_production
