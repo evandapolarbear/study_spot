@@ -1,8 +1,8 @@
 require 'test_helper'
 
-class StaticPagesControllerTest < ActionDispatch::IntegrationTest
-  test "should get index" do
-    get static_pages_index_url
+class StaticPagesControllerTest < ActionController::TestCase
+  test "should get root" do
+    get :root
     assert_response :success
   end
 

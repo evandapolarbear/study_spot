@@ -1,5 +1,4 @@
 class StaticPagesController < ApplicationController
-  def index
-    
+  def root
   end
 end
