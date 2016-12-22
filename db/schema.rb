@@ -11,19 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160421004455) do
+ActiveRecord::Schema.define(version: 20161222015615) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "benches", force: :cascade do |t|
-    t.string   "description"
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
-    t.float    "lat"
-    t.float    "lng"
-    t.integer  "seating",     default: 2, null: false
-    t.string   "picture_url"
+  create_table "ar_internal_metadata", primary_key: "key", force: :cascade do |t|
+    t.string   "value"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "favorites", force: :cascade do |t|
@@ -46,6 +42,19 @@ ActiveRecord::Schema.define(version: 20160421004455) do
   end
 
   add_index "reviews", ["bench_id"], name: "index_reviews_on_bench_id", using: :btree
+
+  create_table "spots", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.float    "lat"
+    t.float    "lng"
+    t.string   "network_name", null: false
+    t.string   "password"
+    t.boolean  "coffee",       null: false
+    t.boolean  "plugs",        null: false
+    t.string   "bar"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "username",        null: false
