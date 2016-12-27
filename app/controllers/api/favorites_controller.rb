@@ -3,7 +3,7 @@ class Api::FavoritesController < ApplicationController
   def create
     @favorite = Favorite.new(
       user_id: current_user.id,
-      bench_id: favorites_params[:bench_id]
+      spot_id: favorites_params[:spot_id]
     )
 
     if(@favorite.save)
@@ -17,7 +17,7 @@ class Api::FavoritesController < ApplicationController
   def destroy
     @favorite = Favorite.find_by(
       user_id: current_user.id,
-      bench_id: favorites_params[:bench_id]
+      spot_id: favorites_params[:spot_id]
     )
 
     if(@favorite.destroy)
@@ -30,7 +30,7 @@ class Api::FavoritesController < ApplicationController
 
   private
   def favorites_params
-    params.require(:favorite).permit(:bench_id)
+    params.require(:favorite).permit(:spot_id)
   end
 
 end
