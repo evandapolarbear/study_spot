@@ -1,7 +1,7 @@
 class Favorite < ActiveRecord::Base
-	validates :user_id, uniqueness: {scope: :bench_id}
+	validates :user_id, uniqueness: {scope: :spot_id}
 
-	belongs_to :bench
+	belongs_to :spot
 	belongs_to :user
-	
+
 end

@@ -10,9 +10,9 @@ class User < ActiveRecord::Base
 	before_validation :ensure_session_token_uniqueness
 
 	has_many :favorites
-	has_many :favorite_benches,
+	has_many :favorite_spots,
 		through: :favorites,
-		source: :bench
+		source: :spot
 
 	def password= password
 		self.password_digest = BCrypt::Password.create(password)
