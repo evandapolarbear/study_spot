@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161222015615) do
+ActiveRecord::Schema.define(version: 20161222020358) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,13 +24,13 @@ ActiveRecord::Schema.define(version: 20161222015615) do
 
   create_table "favorites", force: :cascade do |t|
     t.integer  "user_id",    null: false
-    t.integer  "bench_id",   null: false
+    t.integer  "spot_id",    null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  add_index "favorites", ["bench_id"], name: "index_favorites_on_bench_id", using: :btree
-  add_index "favorites", ["user_id", "bench_id"], name: "index_favorites_on_user_id_and_bench_id", unique: true, using: :btree
+  add_index "favorites", ["spot_id"], name: "index_favorites_on_spot_id", using: :btree
+  add_index "favorites", ["user_id", "spot_id"], name: "index_favorites_on_user_id_and_spot_id", unique: true, using: :btree
   add_index "favorites", ["user_id"], name: "index_favorites_on_user_id", using: :btree
 
   create_table "reviews", force: :cascade do |t|
@@ -38,10 +38,10 @@ ActiveRecord::Schema.define(version: 20161222015615) do
     t.integer  "rating",                  null: false
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
-    t.integer  "bench_id"
+    t.integer  "spot_id"
   end
 
-  add_index "reviews", ["bench_id"], name: "index_reviews_on_bench_id", using: :btree
+  add_index "reviews", ["spot_id"], name: "index_reviews_on_spot_id", using: :btree
 
   create_table "spots", force: :cascade do |t|
     t.string   "name"
