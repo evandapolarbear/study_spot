@@ -11,30 +11,30 @@ export default class MarkerManager {
     this._markersToRemove = this._markersToRemove.bind(this);
   }
 
-  updateMarkers(benches){
-    this.benches = benches;
-    this._benchesToAdd().forEach(this._createMarkerFromBench);
+  updateMarkers(spots){
+    this.spots = spots;
+    this._spotsToAdd().forEach(this._createMarkerFromSpot);
     this._markersToRemove().forEach(this._removeMarker);
   }
 
-  _benchesToAdd() {
-    const currentBenches = this.markers.map( marker => marker.benchId );
-    return this.benches.filter( bench => !currentBenches.includes(bench.id) );
+  _spotsToAdd() {
+    const currentSpots = this.markers.map( marker => marker.spotId );
+    return this.spots.filter( spot => !currentSpots.includes(spot.id) );
   }
 
   _markersToRemove(){
-    const benchIds = this.benches.map( bench => bench.id );
-    return this.markers.filter( marker => !benchIds.includes(marker.benchId) );
+    const spotIds = this.spots.map( bench => bench.id );
+    return this.markers.filter( marker => !spotIds.includes(marker.spotId) );
   }
 
-  _createMarkerFromBench(bench) {
-    const pos = new google.maps.LatLng(bench.lat, bench.lng);
+  _createMarkerFromSpot(spot) {
+    const pos = new google.maps.LatLng(spot.lat, spot.lng);
     const marker = new google.maps.Marker({
       position: pos,
       map: this.map,
-      benchId: bench.id
+      spotId: spot.id
     });
-    marker.addListener('click', () => this.handleClick(bench));
+    marker.addListener('click', () => this.handleClick(spot));
     this.markers.push(marker);
   }
 
