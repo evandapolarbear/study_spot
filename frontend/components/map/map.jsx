@@ -9,18 +9,20 @@ const _getCoordsObj = latLng => ({
 });
 
 let _mapOptions = {
-  center: {lat: 37.773972, lng: -122.431297}, // SF
+  center: {lat: 40.5865, lng: -122.3917}, // SF
   zoom: 13
 };
 
-class BenchMap extends Component {
+//{lat: 37.773972, lng: -122.431297}
+
+class Map extends Component {
 
   componentDidMount() {
     const map = this.refs.map;
     this.map = new google.maps.Map(map, _mapOptions);
     this.MarkerManager = new MarkerManager(this.map, this._handleMarkerClick.bind(this));
     if (this.props.singleBench) {
-      this.props.fetchBench(this.props.benchId);
+      this.props.fetchSpot(this.props.spotId);
     } else {
       this._registerListeners();
       this.MarkerManager.updateMarkers(this.props.benches);
@@ -82,8 +84,9 @@ class BenchMap extends Component {
   }
 
   _handleClick(coords) {
+    console.log("map clicked");
     this.props.router.push({
-      pathname: "benches/new",
+      pathname: "spots/new",
       query: coords
     });
   }
