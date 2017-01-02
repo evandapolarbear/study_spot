@@ -17,6 +17,7 @@ class Api::SpotsController < ApplicationController
 
   private
 
+ #FIX spot_params
   def spot_params
     params.require(:spot).permit(
       :lat,

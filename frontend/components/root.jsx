@@ -1,12 +1,12 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 
-// react router
 import { Router, Route, IndexRoute, hashHistory } from 'react-router';
 
-// react components
 import App from './app';
 import SessionFormContainer from './session_form/session_form_container';
+import SpotFormContainer from './spot_form/spot_form_container';
+
 
 const Root = ({ store }) => {
 
@@ -28,13 +28,8 @@ const Root = ({ store }) => {
     <Provider store={store}>
       <Router history={hashHistory}>
         <Route path="/" component={App}>
-          <IndexRoute component={SearchContainer} />
           <Route path="/login" component={SessionFormContainer} onEnter={_redirectIfLoggedIn} />
           <Route path="/signup" component={SessionFormContainer} onEnter={_redirectIfLoggedIn} />
-          <Route path="/benches/new" component={BenchFormContainer} onEnter={_ensureLoggedIn} />
-          <Route path="/benches/:benchId" component={BenchShowContainer}>
-            <Route path="review" component={ReviewFormContainer} onEnter={_ensureLoggedIn} />
-          </Route>
         </Route>
       </Router>
     </Provider>

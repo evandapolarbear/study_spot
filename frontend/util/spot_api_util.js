@@ -1,4 +1,4 @@
-export const fetchBenches = (filters, success) => {
+export const fetchSpots = (filters, success) => {
   $.ajax({
     method: 'GET',
     url: 'api/benches',
@@ -7,7 +7,7 @@ export const fetchBenches = (filters, success) => {
   });
 };
 
-export const fetchBench = (id, success) => {
+export const fetchSpot = (id, success) => {
   $.ajax({
     method: 'GET',
     url: `api/benches/${id}`,
@@ -24,7 +24,7 @@ export const createReview = (review, success) => {
   });
 };
 
-export const createBench = (bench, success) => {
+export const createSpot = (bench, success) => {
   $.ajax({
     method: 'POST',
     url: 'api/benches',
