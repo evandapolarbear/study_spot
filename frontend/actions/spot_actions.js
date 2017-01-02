@@ -25,9 +25,9 @@ export const createReview = review => ({
   review
 });
 
-export const receiveSpot = spot => ({
+export const receiveSpot = data => ({
   type: RECEIVE_SPOT,
-  spot
+  data
 });
 
 export const createSpot = spot => ({

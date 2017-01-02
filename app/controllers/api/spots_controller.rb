@@ -22,9 +22,12 @@ class Api::SpotsController < ApplicationController
     params.require(:spot).permit(
       :lat,
       :lng,
-      :description,
-      :seating,
-      :picture_url
+      :name,
+      :network_name,
+      :password,
+      :coffee,
+      :plugs,
+      :bar
     )
   end
 

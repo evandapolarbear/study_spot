@@ -24,11 +24,12 @@ export const createReview = (review, success) => {
   });
 };
 
-export const createSpot = (bench, success) => {
+export const createSpot = (spot, success, error) => {
   $.ajax({
     method: 'POST',
-    url: 'api/benches',
-    data: bench,
-    success
+    url: 'api/spots',
+    data: spot,
+    success,
+    error
   });
 };
