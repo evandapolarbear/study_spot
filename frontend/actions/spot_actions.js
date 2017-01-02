@@ -15,9 +15,9 @@ export const requestSpot = id => ({
   id
 });
 
-export const receiveSpots = spots => ({
+export const receiveSpots = data => ({
   type: RECEIVE_SPOTS,
-  spots
+  data
 });
 
 export const createReview = review => ({
