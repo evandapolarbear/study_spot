@@ -84,8 +84,6 @@ class Map extends Component {
   }
 
   _handleClick(coords) {
-    console.log("map clicked");
-    console.log(coords);
     this.props.router.push({
       pathname: "spot/new",
       query: coords

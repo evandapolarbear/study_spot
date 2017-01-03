@@ -17,9 +17,9 @@ export default ({getState, dispatch}) => next => action => {
 
   switch(action.type) {
     case CREATE_SPOT:
+      console.log(action.data);
       createSpot(action.data, successCallback, errorCallback);
       return next(action);
-
     default:
       return next(action);
   }

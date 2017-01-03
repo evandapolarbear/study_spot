@@ -30,7 +30,7 @@ export const receiveSpot = data => ({
   data
 });
 
-export const createSpot = spot => ({
+export const createSpot = data => ({
   type: CREATE_SPOT,
-  spot
+  data
 });
