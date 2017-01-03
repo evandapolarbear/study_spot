@@ -71,7 +71,7 @@ class Map extends Component {
       const bounds = {
         northEast: { lat:north, lng: east },
         southWest: { lat: south, lng: west } };
-      this.props.updateFilter('bounds', bounds);
+        //FIX use filter actions here to dictate how may spots to lad
     });
     google.maps.event.addListener(this.map, 'click', event => {
       const coords = _getCoordsObj(event.latLng);
@@ -85,8 +85,9 @@ class Map extends Component {
 
   _handleClick(coords) {
     console.log("map clicked");
+    console.log(coords);
     this.props.router.push({
-      pathname: "spots/new",
+      pathname: "spot/new",
       query: coords
     });
   }
@@ -96,4 +97,4 @@ class Map extends Component {
   }
 }
 
-export default BenchMap;
+export default withRouter(Map);

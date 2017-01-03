@@ -6,7 +6,7 @@ export default class MarkerManager {
     this.handleClick = handleClick;
     this.markers = [];
     //permanently bind instance methods
-    this._createMarkerFromBench = this._createMarkerFromBench.bind(this);
+    this._createMarkerFromSpot = this._createMarkerFromSpot.bind(this);
     this._removeMarker = this._removeMarker.bind(this);
     this._markersToRemove = this._markersToRemove.bind(this);
   }

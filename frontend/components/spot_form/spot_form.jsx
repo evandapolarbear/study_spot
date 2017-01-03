@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router';
 
-class SpotFrom extends React.Component {
+class SpotForm extends React.Component {
   constructor(props) {
     super(props);
 
@@ -22,11 +22,10 @@ class SpotFrom extends React.Component {
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.goHome = this.goHome.bind(this);
   }
 
   goHome(){
-    this.props.router.psuh("/");
+    this.props.router.push("/");
   }
 
   submitForm(e){
@@ -34,6 +33,10 @@ class SpotFrom extends React.Component {
     const spot = Object.assign({}, this.state, this.pos);
     this.props.createSpot({ spot });
     this.goHome();
+  }
+
+  handleSubmit(){
+    
   }
 
   render(){
@@ -47,8 +50,12 @@ class SpotFrom extends React.Component {
           <form onSubmit={this.submitForm}>
 
           </form>
+
+          <h4>Hello</h4>
         </div>
       </div>
     );
   }
 }
+
+export default withRouter(SpotForm);
