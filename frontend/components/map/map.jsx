@@ -42,22 +42,29 @@ let _mapOptions = {
 
 class Map extends Component {
 
+  componentWillMount(){
+    this.props.requestSpots();
+  }
+
   componentDidMount() {
     const map = this.refs.map;
     this.map = new google.maps.Map(map, _mapOptions);
     this.MarkerManager = new MarkerManager(this.map, this._handleMarkerClick.bind(this));
 
     if (this.props.singleBench) {
+      //FIX currently unused
       this.props.fetchSpot(this.props.spotId);
     } else {
       this._registerListeners();
       this.MarkerManager.updateMarkers(this.props.spots);
+      console.log(this.props.spots);
     }
   }
 
   componentDidUpdate() {
+    console.log(this.props.spots);
     if(this.props.currentSpot){
-      this.MarkerManager.updateMarkers([this.props.spots[Object.keys(this.props.spots)[0]]]); //grabs only that one bench
+      this.MarkerManager.updateMarkers([this.props.spots[Object.keys(this.props.spots)[0]]]); //grabs only that one bench FIX unused
     } else {
       this.MarkerManager.updateMarkers(this.props.spots);
     }

@@ -18,13 +18,16 @@ export default class MarkerManager {
   }
 
   _spotsToAdd() {
-    console.log(this.markers);
     const currentSpots = this.markers.map( marker => marker.spotId );
     return this.spots.filter( spot => !currentSpots.includes(spot.id) );
+
+    // console.log('spots to add');
+    // console.log(result);
+    // return result;
   }
 
   _markersToRemove(){
-    const spotIds = this.spots.map( bench => bench.id );
+    const spotIds = this.spots.map( spot => spot.id );
     return this.markers.filter( marker => !spotIds.includes(marker.spotId) );
   }
 
