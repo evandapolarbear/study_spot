@@ -32,7 +32,6 @@ class SpotForm extends React.Component {
 
   handleSubmit(e){
     e.preventDefault();
-    console.log('form submitted');
     let newSpot = Object.assign({}, this.state, this.pos);
     this.props.createSpot({spot: newSpot});
     this.goToMain();
@@ -80,6 +79,7 @@ class SpotForm extends React.Component {
                 <input type='radio' name='bar' value='hard' onChange={this.update('bar')} /><span className='radio-text'>Hard</span>
 
             <input type='submit' value='Submit New Spot' className='spot-submit-button'/>
+            <button className='cancel-button' onClick={this.goToMain}>Canael New Spot</button>
           </form>
         </div>
       </div>

@@ -1,25 +1,31 @@
 import {hashHistory} from 'react-router';
 
-import { createSpot } from '../util/spot_api_util';
+import { createSpot, fetchSpots } from '../util/spot_api_util';
 
-import { CREATE_SPOT } from '../actions/spot_actions';
+import { CREATE_SPOT, REQUEST_SPOTS, requestSpots, receiveSpots } from '../actions/spot_actions';
+
 
 
 export default ({getState, dispatch}) => next => action => {
 
-  const successCallback = spot => {
-    console.log("success");
-    console.log(spot);
+  const successCreateCallback = spot => {
+    dispatch(requestSpots());
   };
+
+  const successRequestSpots = spots => {
+    dispatch(receiveSpots(spots));
+  };
+
   const errorCallback = error => {
-    console.log(error);
+    console.log(error.statusText);
   };
 
   switch(action.type) {
     case CREATE_SPOT:
-      console.log(action.data);
-      createSpot(action.data, successCallback, errorCallback);
+      createSpot(action.data, successCreateCallback, errorCallback);
       return next(action);
+    case REQUEST_SPOTS:
+      fetchSpots(successRequestSpots, errorCallback);
     default:
       return next(action);
   }

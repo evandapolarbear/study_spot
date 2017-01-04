@@ -1,16 +1,25 @@
-export const fetchSpots = (filters, success) => {
+// export const fetchSpots = (filters, success, error) => {
+//   $.ajax({
+//     method: 'GET',
+//     url: 'api/spots',
+//     data: filters,
+//     success
+//   });
+// };
+
+export const fetchSpots = (success, error) => {
   $.ajax({
     method: 'GET',
-    url: 'api/benches',
-    data: filters,
-    success
+    url: 'api/spots',
+    success,
+    error
   });
 };
 
 export const fetchSpot = (id, success) => {
   $.ajax({
     method: 'GET',
-    url: `api/benches/${id}`,
+    url: `api/spots/${id}`,
     success
   });
 };

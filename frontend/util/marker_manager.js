@@ -11,13 +11,14 @@ export default class MarkerManager {
     this._markersToRemove = this._markersToRemove.bind(this);
   }
 
-  updateMarkers(spots){
-    this.spots = spots;
+  updateMarkers(state){
+    this.spots = state.spots;
     this._spotsToAdd().forEach(this._createMarkerFromSpot);
     this._markersToRemove().forEach(this._removeMarker);
   }
 
   _spotsToAdd() {
+    console.log(this.markers);
     const currentSpots = this.markers.map( marker => marker.spotId );
     return this.spots.filter( spot => !currentSpots.includes(spot.id) );
   }
@@ -32,7 +33,8 @@ export default class MarkerManager {
     const marker = new google.maps.Marker({
       position: pos,
       map: this.map,
-      spotId: spot.id
+      spotId: spot.id,
+      setMap: this.map
     });
     marker.addListener('click', () => this.handleClick(spot));
     this.markers.push(marker);
