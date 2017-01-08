@@ -1,5 +1,6 @@
 /* global google:false */
 
+
 export default class MarkerManager {
   constructor(map, handleClick){
     this.map = map;

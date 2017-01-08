@@ -33,7 +33,7 @@ const Root = ({ store }) => {
           <IndexRoute component={MainContainer} />
           <Route path="/login" component={SessionFormContainer} onEnter={_redirectIfLoggedIn} />
           <Route path="/signup" component={SessionFormContainer} onEnter={_redirectIfLoggedIn} />
-          <Route path="spot/new" component={SpotFormContainer} /> 
+          <Route path="/spot/new" component={SpotFormContainer} />
         </Route>
       </Router>
     </Provider>

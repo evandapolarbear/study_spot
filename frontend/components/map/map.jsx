@@ -82,8 +82,8 @@ class Map extends Component {
     });
   }
 
-  _handleMarkerClick(bench) {
-    this.props.router.push(`benches/${bench.id}`);
+  _handleMarkerClick(spot) {
+    this.props.router.push(`spot/${spot.id}`);
   }
 
   _handleClick(coords) {
