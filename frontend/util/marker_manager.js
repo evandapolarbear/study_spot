@@ -12,18 +12,18 @@ export default class MarkerManager {
   }
 
   updateMarkers(state){
-    this.spots = state.spots;
+    this.spots = state.spots.filter(spot => (spot !== undefined));
     this._spotsToAdd().forEach(this._createMarkerFromSpot);
     this._markersToRemove().forEach(this._removeMarker);
   }
 
   _spotsToAdd() {
     const currentSpots = this.markers.map( marker => marker.spotId );
-    return this.spots.filter( spot => !currentSpots.includes(spot.id) );
+    const result = this.spots.filter( spot => !currentSpots.includes(spot.id) );
 
-    // console.log('spots to add');
-    // console.log(result);
-    // return result;
+    console.log('spots to add');
+    console.log(result);
+    return result;
   }
 
   _markersToRemove(){
