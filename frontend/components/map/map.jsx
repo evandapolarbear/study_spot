@@ -57,12 +57,10 @@ class Map extends Component {
     } else {
       this._registerListeners();
       this.MarkerManager.updateMarkers(this.props.spots);
-      console.log(this.props.spots);
     }
   }
 
   componentDidUpdate() {
-    console.log(this.props.spots);
     if(this.props.currentSpot){
       this.MarkerManager.updateMarkers([this.props.spots[Object.keys(this.props.spots)[0]]]); //grabs only that one bench FIX unused
     } else {

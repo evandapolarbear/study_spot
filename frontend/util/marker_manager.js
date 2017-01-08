@@ -20,9 +20,6 @@ export default class MarkerManager {
   _spotsToAdd() {
     const currentSpots = this.markers.map( marker => marker.spotId );
     const result = this.spots.filter( spot => !currentSpots.includes(spot.id) );
-
-    console.log('spots to add');
-    console.log(result);
     return result;
   }
 
