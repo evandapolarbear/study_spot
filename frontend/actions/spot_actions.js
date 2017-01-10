@@ -5,6 +5,7 @@ export const REQUEST_SPOTS = "REQUEST_SPOTS";
 export const REQUEST_SPOT = "REQUEST_SPOT";
 export const CREATE_SPOT = "CREATE_SPOT";
 export const CREATE_REVIEW = "CREATE_REVIEW";
+export const SET_CURRENT_SPOT = "SET_CURRENT_SPOT";
 
 export const requestSpots = () => ({
   type: REQUEST_SPOTS
@@ -27,6 +28,11 @@ export const createReview = review => ({
 
 export const receiveSpot = data => ({
   type: RECEIVE_SPOT,
+  data
+});
+
+export const setCurrentSpot = data => ({
+  type: SET_CURRENT_SPOT,
   data
 });
 

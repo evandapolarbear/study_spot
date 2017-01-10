@@ -1,4 +1,5 @@
-import { RECEIVE_SPOTS, RECEIVE_SPOT } from '../actions/spot_actions';
+import { RECEIVE_SPOTS,
+         RECEIVE_SPOT, SET_CURRENT_SPOT } from '../actions/spot_actions';
 import merge from 'lodash/merge';
 
 const _default = Object.freeze({
@@ -18,6 +19,8 @@ const SessionReducer = (state = _default, action) => {
     case RECEIVE_SPOT:
       const currentSpot = action.data;
       return merge({}, state, { currentSpot });
+    case SET_CURRENT_SPOT:
+      return merge({}, state, {currentSpot: action.data});
     default:
       return state;
   }

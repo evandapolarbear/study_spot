@@ -84,6 +84,7 @@ class Map extends Component {
 
   _handleMarkerClick(spot) {
     this.props.router.push(`spot/${spot.id}`);
+    this.props.setCurrentSpot(spot);
   }
 
   _handleClick(coords) {

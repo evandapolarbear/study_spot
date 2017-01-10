@@ -3,7 +3,7 @@ import React from 'react';
 import SpotMap from '../map/map';
 import SpotShowContainer from '../spot_show/spot_show_container';
 
-const Main = ({ spots, updateFilter, requestSpots }) => (
+const Main = ({ spots, updateFilter, requestSpots, setCurrentSpot }) => (
   <div className='main'>
     <div className='map'>
       <h3>
@@ -13,6 +13,7 @@ const Main = ({ spots, updateFilter, requestSpots }) => (
         <SpotMap spots={spots}
           updateFilter={updateFilter}
           requestSpots={requestSpots}
+          setCurrentSpot={setCurrentSpot}
           />
       </div>
       <div className='right-half-main'>
