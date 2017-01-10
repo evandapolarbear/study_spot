@@ -14,6 +14,16 @@
  *= require_self
  */
 
+.main {
+  display: inline-block;
+  margin-left: 5%;
+  margin-top: 3%
+}
+
+
+
+
+/*Oringinal is below*/
 ::-webkit-scrollbar {
     width: 12px;
 }
