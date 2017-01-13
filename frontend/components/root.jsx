@@ -4,9 +4,10 @@ import { Provider } from 'react-redux';
 import { Router, Route, IndexRoute, hashHistory } from 'react-router';
 
 import App from './app';
-import MainContainer from './main/main_container'
+import MainContainer from './main/main_container';
 import SessionFormContainer from './session_form/session_form_container';
 import SpotFormContainer from './spot_form/spot_form_container';
+import SpotShowContainer from './spot_show/spot_show_container';
 
 
 
@@ -29,11 +30,11 @@ const Root = ({ store }) => {
   return (
     <Provider store={store}>
       <Router history={hashHistory}>
-        <Route path="/" component={App}>
-          <IndexRoute component={MainContainer} />
+        <Route path="/" component={MainContainer}>
           <Route path="/login" component={SessionFormContainer} onEnter={_redirectIfLoggedIn} />
           <Route path="/signup" component={SessionFormContainer} onEnter={_redirectIfLoggedIn} />
           <Route path="/spot/new" component={SpotFormContainer} />
+          <Route path="/spot/:spotId" component={SpotShowContainer} />
         </Route>
       </Router>
     </Provider>
