@@ -1,4 +1,3 @@
-
 export const RECEIVE_SPOTS = "RECEIVE_SPOTS";
 export const RECEIVE_SPOT = "RECEIVE_SPOT";
 export const REQUEST_SPOTS = "REQUEST_SPOTS";

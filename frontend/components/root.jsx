@@ -1,5 +1,5 @@
 import React from 'react';
-import { Provider } from 'react-redux';
+import { Provider, connect } from 'react-redux';
 
 import { Router, Route, IndexRoute, hashHistory } from 'react-router';
 
@@ -8,6 +8,8 @@ import MainContainer from './main/main_container';
 import SessionFormContainer from './session_form/session_form_container';
 import SpotFormContainer from './spot_form/spot_form_container';
 import SpotShowContainer from './spot_show/spot_show_container';
+
+import { receiveErrors } from '../actions/session_actions';
 
 
 
@@ -25,7 +27,7 @@ const Root = ({ store }) => {
     if (currentUser) {
       replace('/');
     }
-  }
+  };
 
   return (
     <Provider store={store}>
@@ -33,7 +35,8 @@ const Root = ({ store }) => {
         <Route path="/" component={MainContainer}>
           <Route path="/login" component={SessionFormContainer} onEnter={_redirectIfLoggedIn} />
           <Route path="/signup" component={SessionFormContainer} onEnter={_redirectIfLoggedIn} />
-          <Route path="/spot/new" component={SpotFormContainer} />
+          <Route path="/spot/new" component={SpotFormContainer}
+          onEnter={_ensureLoggedIn}/>
           <Route path="/spot/:spotId" component={SpotShowContainer} />
         </Route>
       </Router>

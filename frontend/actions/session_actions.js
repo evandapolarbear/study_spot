@@ -23,7 +23,10 @@ export const receiveCurrentUser = currentUser => ({
   currentUser
 });
 
-export const receiveErrors = errors => ({
-  type: RECEIVE_ERRORS,
-  errors
-});
+export const receiveErrors = errors =>{
+  console.log('errors dispatched');
+  return (
+    {type: RECEIVE_ERRORS,
+    errors}
+  );
+};
