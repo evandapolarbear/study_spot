@@ -14,10 +14,13 @@
  *= require_self
  */
 
+
+
 .main {
+  width: 90%;
   display: inline-block;
   margin-left: 5%;
-  margin-top: 3%
+  margin-right: 5%;
 }
 
 
@@ -40,18 +43,11 @@
 
  body {
    font-family: 'Abel', sans-serif;
+   padding: 0;
+   margin: 0;
  }
 
-.content {
-  height: 100%;
-}
 
-.map {
-  width: 500px;
-  height: 500px;
-  float: left;
-  position: relative;
-}
 
 .reviews {
   float: left;
@@ -80,14 +76,14 @@
   justify-content: center;
 }
 
-.right-half {
+/*.right-half {
   width: 400px;
   margin-left: 50px;
   margin-top: 40px;
   height: 480px;
   overflow-y: scroll;
   padding: 0 20px 20px 20px;
-}
+}*/
 
 .right-half.bench-details {
   display: flex;
@@ -95,7 +91,7 @@
   margin-top: 20px;
 }
 
-.index-item-info {
+/*.index-item-info {
   margin: 10px 10px 10px 10px;
   display: flex;
   flex-direction: column;
@@ -202,10 +198,10 @@ input.new-bench-button {
   width: 160px;
   margin-top: 10px;
 }
-
+/*
 button.new-bench-button {
   width: 160px;
-}
+}*/
 
 .login-form-container {
   display: flex;
@@ -228,11 +224,11 @@ button.new-bench-button {
   padding: 20px;
 }
 
-.filter {
+/*.filter {
   font-weight: bold;
 }
 
 .header-link {
   text-decoration: none;
   color: black;
-}
+}*/
