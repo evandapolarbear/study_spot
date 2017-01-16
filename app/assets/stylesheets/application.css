@@ -17,13 +17,24 @@
 
 
 
+@media screen and (min-width: 640px){
+  .main {
+    width: 90%;
+    display: inline-block;
+    margin-left: 5%;
+    margin-right: 5%;
+  }
 
-/*.main {
-  width: 90%;
-  display: inline-block;
-  margin-left: 5%;
-  margin-right: 5%;
-}*/
+  .content {
+    display:flex;
+  }
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
 main body{
   width : 100%;
@@ -32,6 +43,11 @@ main body{
   padding : 0;
 }
 
+.instructions {
+  background-color: blue;
+  font-size: 24px;
+  margin: 0 10%;
+}
 
 /*Oringinal is below*/
 ::-webkit-scrollbar {
@@ -56,13 +72,13 @@ main body{
 
 
 
-.reviews {
+/*.reviews {
   float: left;
 }
 
 .review-form {
   float: left;
-}
+}*/
 
 .bench-index-item {
   border: 1px solid black;

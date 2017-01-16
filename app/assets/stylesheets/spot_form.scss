@@ -4,7 +4,16 @@
   height : 100%;
   width : 100%;
 }
+.right-half-main{
+ margin:auto;
+}
 
-.new-spot-form {
+.new-spot-form form{
+  display: flex;
+  flex-direction: column;
+}
 
+form {
+  font-size: 22px;
+  line-height: 1.4;
 }

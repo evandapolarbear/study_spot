@@ -22,7 +22,7 @@ class SpotShow extends React.Component {
 
   checkForCurrentSpot(){
     const spot = this.props.currentSpot;
-    if (spot){
+    if (spot !== null){
       return (
         <div>
           <h1>Spot: {spot.name}</h1>
@@ -35,9 +35,9 @@ class SpotShow extends React.Component {
       );
     } else {
       return (
-        <h1>
-          Please Select a spot
-        </h1>
+        <h2>
+          Please Select a spot to view its details or select an empty spot on the map.
+        </h2>
       );
     }
   }

@@ -65,7 +65,7 @@ class SpotForm extends React.Component {
                 onChange={this.update('network_name')} className='spot-field'/>
             </label>
 
-            <label className='spot-field'>Password (if applicable):
+            <label className='spot-field'>Password (if any):
               <input type='text' value={password}
                 onChange={this.update('password')} className='spot-field'/>
             </label>
