@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import ReactDom from 'react-dom';
 import { withRouter } from 'react-router';
-import Modal from 'react-modal';
 
 import MarkerManager from '../../util/marker_manager';
 import SpotFormContainer from '../spot_form/spot_form_container';
@@ -47,25 +46,10 @@ class Map extends Component {
   constructor(props){
     super(props);
 
-    this.state = {
-      modalOpen : false
-    };
-
-    this.openModal = this.openModal.bind(this);
-    this.closeModal = this.closeModal.bind(this);
   }
 
   componentWillMount(){
     this.props.requestSpots();
-    Modal.setAppElement('body');
-  }
-
-  openModal(){
-    this.setState({modalOpen : true});
-  }
-
-  closeModal(){
-    this.setState({modalOpen : false});
   }
 
   componentDidMount() {
@@ -120,14 +104,6 @@ class Map extends Component {
   render() {
     return (
       <div className="map" ref="map">Map
-        <Modal
-          isOpen={this.state.modalOpen}
-          onRequestClose={this.closeModal}
-          contentLabel={"add spot form"}>
-
-          {this.props.children}
-
-        </Modal>
       </div>
     );
   }

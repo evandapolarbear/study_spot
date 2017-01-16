@@ -51,35 +51,47 @@ class SpotForm extends React.Component {
       <div className='new-spot-container'>
         <div className='new-spot-form'>
 
+          <h2>New Spot!</h2>
+
           <form onSubmit={this.handleSubmit}>
 
-            <label className='spot-field'>Location Name</label>
+            <label className='spot-field'>Location Name:
               <input type='text' value={name}
                 onChange={this.update('name')} className='spot-field'/>
+            </label>
 
-              <label className='spot-field'>Network Name</label>
+            <label className='spot-field'>Network Name:
               <input type='text' value={network_name}
                 onChange={this.update('network_name')} className='spot-field'/>
+            </label>
 
-              <label className='spot-field'>Password if applicable</label>
+            <label className='spot-field'>Password (if applicable):
               <input type='text' value={password}
                 onChange={this.update('password')} className='spot-field'/>
+            </label>
 
-            <label className='spot-radio'>Coffee</label>
-                <input type='radio' name='coffee' value={false} onChange={this.update('coffee')} /><span className='radio-text'>false</span>
-                <input type='radio' name='coffee' value={true} onChange={this.update('coffee')} /><span className='radio-text'>true</span>
+            <label className='spot-radio'>Coffee:
+              <input type='radio' name='coffee' value={false} onChange={this.update('coffee')} /><span className='radio-text'>false</span>
+              <input type='radio' name='coffee' value={true} onChange={this.update('coffee')} /><span className='radio-text'>true</span>
+            </label>
 
-            <label className='spot-radio'>Plugs</label>
-                <input type='radio' name='plugs' value={false} onChange={this.update('plugs')} /><span className='radio-text'>false</span>
-                <input type='radio' name='plugs' value={true} onChange={this.update('plugs')} /><span className='radio-text'>true</span>
 
-            <label className='spot-radio'>Bar</label>
-                <input type='radio' name='bar' value='none' onChange={this.update('bar')} /><span className='radio-text'>None</span>
-                <input type='radio' name='bar' value='soft' onChange={this.update('bar')} /><span className='radio-text'>Soft</span>
-                <input type='radio' name='bar' value='hard' onChange={this.update('bar')} /><span className='radio-text'>Hard</span>
+            <label className='spot-radio'>Plugs:
+              <input type='radio' name='plugs' value={false} onChange={this.update('plugs')} /><span className='radio-text'>false</span>
+              <input type='radio' name='plugs' value={true} onChange={this.update('plugs')} /><span className='radio-text'>true</span>
+            </label>
 
-            <input type='submit' value='Submit New Spot' className='spot-submit-button'/>
-            <button className='cancel-button' onClick={this.goToMain}>Canael New Spot</button>
+
+            <label className='spot-radio'>Bar:
+              <input type='radio' name='bar' value='none' onChange={this.update('bar')} /><span className='radio-text'>None</span>
+              <input type='radio' name='bar' value='soft' onChange={this.update('bar')} /><span className='radio-text'>Soft</span>
+              <input type='radio' name='bar' value='hard' onChange={this.update('bar')} /><span className='radio-text'>Hard</span>
+            </label>
+
+            <div className='spot-form-buttons'>
+              <input type='submit' value='Submit New Spot' className='spot-submit-button'/>
+              <button className='cancel-button' onClick={this.goToMain}>Canael New Spot</button>
+            </div>
           </form>
         </div>
       </div>

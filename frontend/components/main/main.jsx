@@ -11,7 +11,7 @@ const Main = ({ spots, updateFilter, requestSpots, setCurrentSpot, children }) =
       <GreetingContainer/>
     </header>
 
-    <div className='map'>
+    <div className="content">
       <div className='left-half-main'>
         <SpotMap spots={spots}
           updateFilter={updateFilter}
@@ -19,10 +19,10 @@ const Main = ({ spots, updateFilter, requestSpots, setCurrentSpot, children }) =
           setCurrentSpot={setCurrentSpot}
           />
       </div>
-    </div>
 
-    <div className='right-half-main'>
-      {children}
+      <div className='right-half-main'>
+        {children}
+      </div>
     </div>
   </div>
 );
