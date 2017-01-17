@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router';
 
 import GreetingContainer from '../greeting/greeting_container';
 import SpotMap from '../map/map';
@@ -29,7 +28,7 @@ class Main extends React.Component {
     return (
       <div className='main'>
         <header>
-          <Link to="/" className="header-link"><h1>Study Spot</h1></Link>
+          <h1 className="header-link">Spots With Free Wifi</h1>
           <GreetingContainer/>
         </header>
 
