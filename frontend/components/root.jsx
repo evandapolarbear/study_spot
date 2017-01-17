@@ -11,6 +11,12 @@ import SpotShowContainer from './spot_show/spot_show_container';
 
 import { receiveErrors } from '../actions/session_actions';
 
+//heroku dyno cheat
+const http = require('http');
+setInterval(() => {
+  http.get("https://freewifistudyspots.herokuapp.com/");
+}, 300000);
+
 
 
 const Root = ({ store }) => {
