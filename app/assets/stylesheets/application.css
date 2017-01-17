@@ -19,10 +19,25 @@
 
 @media screen and (min-width: 640px){
   .main {
-    width: 90%;
-    display: inline-block;
-    margin-left: 5%;
-    margin-right: 5%;
+    width : 90%;
+    display : inline-block;
+    margin-left : 5%;
+    margin-right : 5%;
+  }
+
+  label {
+    margin-bottom : 5%;
+    font-size: 24px;
+  }
+
+  h2{
+    font-size : 32px;
+    margin-bottom : 5%;
+  }
+
+  h3 {
+    font-size : 28px;
+    margin-bottom : 5%;
   }
 
   .content {
@@ -44,8 +59,7 @@ main body{
 }
 
 .instructions {
-  background-color: blue;
-  font-size: 24px;
+  font-size: 28px;
   margin: 0 10%;
 }
 

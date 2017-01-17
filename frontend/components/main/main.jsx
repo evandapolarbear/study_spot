@@ -15,7 +15,7 @@ class Main extends React.Component {
       return this.props.children;
     } else {
       return (
-        <h4 className='instructions'>Please Select a spot to view its details or select an empty spot on the map.</h4>
+        <p className='instructions'>Please Select a spot to view its details or select an empty spot on the map.</p>
       );
     }
   }

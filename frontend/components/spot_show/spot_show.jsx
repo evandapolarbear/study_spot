@@ -35,7 +35,7 @@ class SpotShow extends React.Component {
       );
     } else {
       return (
-        <h2>
+        <h2 className='instructions'>
           Please Select a spot to view its details or select an empty spot on the map.
         </h2>
       );
