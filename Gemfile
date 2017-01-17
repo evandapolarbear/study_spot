@@ -18,3 +18,9 @@ group :development, :test do
   gem 'web-console', '~> 2.0'
   gem 'spring'
 end
+
+
+group :production do
+  gem 'newrelic_rpm'
+  gem 'rails_12factor' # error feedback
+end
