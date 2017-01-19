@@ -38,7 +38,20 @@ const _getCoordsObj = latLng => ({
 
 let _mapOptions = {
   center: {lat: 37.773972, lng: -122.431297}, // SF
-  zoom: 13
+  zoom: 12,
+  styles: [
+    {
+      featureType: "water",
+      elementType: "geometry",
+      stylers: [{color: "#018080"}]
+    },
+    {
+      featureType: "poi.park",
+      elementType: "geometry",
+      stylers: [{color: "#FAFFDB"}]
+
+    }
+  ]
 };
 
 

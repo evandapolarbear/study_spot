@@ -35,7 +35,8 @@ export default class MarkerManager {
       position: pos,
       map: this.map,
       spotId: spot.id,
-      setMap: this.map
+      setMap: this.map,
+      animation: google.maps.Animation.DROP,
     });
     marker.addListener('click', () => this.handleClick(spot));
     this.markers.push(marker);

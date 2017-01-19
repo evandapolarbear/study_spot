@@ -1,7 +1,7 @@
 {
-  "name": "BenchBnb",
+  "name": "StudySpot",
   "version": "1.0.0",
-  "description": "air bnb for benches!",
+  "description": "Free wifi for studying!",
   "main": "index.js",
   "directories": {
     "test": "test"
