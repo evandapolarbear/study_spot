@@ -1,5 +1,5 @@
 #StudySpots
-[StudySpots Live](https://studyspots.net)
+[StudySpots Live](http://www.studyspots.net)
 
 ![image](./docs/spotsnodata.jpeg)
 #Features & Implementation
