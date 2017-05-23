@@ -72,7 +72,7 @@ class Map extends Component {
 
   locateSuccess(pos){
     let lat = pos.coords.latitude;
-    let lng = pos.coords.longitue;
+    let lng = pos.coords.longitude;
 
     console.log(lat);
     console.log(lng);
@@ -120,13 +120,17 @@ class Map extends Component {
     )
   }
 
-  // componentDidUpdate() {
-  //   if(this.props.currentSpot){
-  //     this.MarkerManager.updateMarkers([this.props.spots[Object.keys(this.props.spots)[0]]]); //grabs only that one bench FIX unused
-  //   } else {
-  //     this.MarkerManager.updateMarkers(this.props.spots);
-  //   }
-  // }
+  componentWillUnmount(){
+    navigator.geolocation.clearWatch(watchID);
+  }
+
+  componentDidUpdate() {
+    if(this.props.currentSpot){
+      this.MarkerManager.updateMarkers([this.props.spots[Object.keys(this.props.spots)[0]]]); //grabs only that one bench FIX unused
+    } else {
+      this.MarkerManager.updateMarkers(this.props.spots);
+    }
+  }
 
   _registerListeners() {
     google.maps.event.addListener(this.map, 'idle', () => {
