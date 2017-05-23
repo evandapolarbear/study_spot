@@ -36,22 +36,26 @@ const _getCoordsObj = latLng => ({
   // const relocate = new google.maps.LatLng(centerLat, centerLng);
   // map.setCenter(relocate);
 
-let _mapOptions = {
-  center: {lat: 37.773972, lng: -122.431297}, // SF
-  zoom: 12,
-  styles: [
-    {
-      featureType: "water",
-      elementType: "geometry",
-      stylers: [{color: "#018080"}]
-    },
-    {
-      featureType: "poi.park",
-      elementType: "geometry",
-      stylers: [{color: "#FAFFDB"}]
+let _mapOptions = (lat, lng) => {
+  lat = lat === undefined ? 37.773972 : lat
+  lng = lng === undefined ? -122.431297 : lng
+  return({
+    center: {lat, lng}, // SF
+    zoom: 12,
+    styles: [
+      {
+        featureType: "water",
+        elementType: "geometry",
+        stylers: [{color: "#018080"}]
+      },
+      {
+        featureType: "poi.park",
+        elementType: "geometry",
+        stylers: [{color: "#FAFFDB"}]
 
-    }
-  ]
+      }
+    ]
+  })
 };
 
 
@@ -59,15 +63,22 @@ class Map extends Component {
   constructor(props){
     super(props);
 
+
   }
 
   componentWillMount(){
     this.props.requestSpots();
   }
 
-  componentDidMount() {
+  locateSuccess(pos){
+    let lat = pos.coords.latitude;
+    let lng = pos.coords.longitue;
+
+    console.log(lat);
+    console.log(lng);
+
     const map = this.refs.map;
-    this.map = new google.maps.Map(map, _mapOptions);
+    this.map = new google.maps.Map(map, _mapOptions(lat, lng));
     this.MarkerManager = new MarkerManager(this.map, this._handleMarkerClick.bind(this));
 
     if (this.props.singleBench) {
@@ -79,13 +90,43 @@ class Map extends Component {
     }
   }
 
-  componentDidUpdate() {
-    if(this.props.currentSpot){
-      this.MarkerManager.updateMarkers([this.props.spots[Object.keys(this.props.spots)[0]]]); //grabs only that one bench FIX unused
+  locateError(e){
+    console.log(e);
+    const map = this.refs.map;
+    this.map = new google.maps.Map(map, _mapOptions());
+    this.MarkerManager = new MarkerManager(this.map, this._handleMarkerClick.bind(this));
+
+    if (this.props.singleBench) {
+      //FIX currently unused
+      this.props.fetchSpot(this.props.spotId);
     } else {
+      this._registerListeners();
       this.MarkerManager.updateMarkers(this.props.spots);
     }
   }
+
+  componentDidMount() {
+    let geoOptions = {
+        enableHighAccuracy: true,
+        maximumAge        : 30000,
+        timeout           : 27000
+      };
+
+
+    const watchId = navigator.geolocation.watchPosition(
+      this.locateSuccess.bind(this),
+      this.locateError.bind(this),
+      geoOptions
+    )
+  }
+
+  // componentDidUpdate() {
+  //   if(this.props.currentSpot){
+  //     this.MarkerManager.updateMarkers([this.props.spots[Object.keys(this.props.spots)[0]]]); //grabs only that one bench FIX unused
+  //   } else {
+  //     this.MarkerManager.updateMarkers(this.props.spots);
+  //   }
+  // }
 
   _registerListeners() {
     google.maps.event.addListener(this.map, 'idle', () => {
