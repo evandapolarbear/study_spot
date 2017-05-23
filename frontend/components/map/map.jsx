@@ -10,16 +10,6 @@ const _getCoordsObj = latLng => ({
   lng: latLng.lng()
 });
 
-//
-// function setCenter() {
-//   let prom = getUserLocation();
-//   prom.then(val => {
-//     console.log(val);
-//     return {lat: val.latitude, lng: val.longitue};
-//   }, val => (val));
-// }
-//
-
 let _mapOptions = (lat, lng) => {
   lat = lat === undefined ? 37.773972 : lat
   lng = lng === undefined ? -122.431297 : lng
@@ -46,6 +36,10 @@ let _mapOptions = (lat, lng) => {
 class Map extends Component {
   constructor(props){
     super(props);
+
+    this.state = {
+      watchId: null,
+    }
   }
 
   componentWillMount(){
@@ -60,7 +54,9 @@ class Map extends Component {
       };
 
     return new Promise((resolve, reject) => {
-      navigator.geolocation.getCurrentPosition(position => {
+      let watchId = navigator.geolocation.getCurrentPosition(position => {
+        this.setState({watchId});
+
         if(position){
           resolve(position.coords);
         } else {
@@ -76,7 +72,6 @@ class Map extends Component {
 
     locP.then(res => {
           location = res;
-          console.log(location);
         })
         .then(() =>{
           console.log("in done");
@@ -98,12 +93,12 @@ class Map extends Component {
   }
 
   componentWillUnmount(){
-    navigator.geolocation.clearWatch(watchId);
+    navigator.geolocation.clearWatch(this.state.watchId);
   }
 
   componentDidUpdate() {
     if(this.props.currentSpot){
-      this.MarkerManager.updateMarkers([this.props.spots[Object.keys(this.props.spots)[0]]]); //grabs only that one bench FIX unused
+      this.MarkerManager.updateMarkers([this.props.spots[Object.keys(this.props.spots)[0]]]); //grabs only that one spot FIX unused
     } else {
       this.MarkerManager.updateMarkers(this.props.spots);
     }
@@ -129,7 +124,6 @@ class Map extends Component {
   }
 
   _handleClick(coords) {
-
     this.props.router.push({
       pathname: "spot/new",
       query: coords
