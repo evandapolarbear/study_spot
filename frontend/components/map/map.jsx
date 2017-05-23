@@ -10,19 +10,6 @@ const _getCoordsObj = latLng => ({
   lng: latLng.lng()
 });
 
-
-
-// function getUserLocation(){
-//   return new Promise(function(resolve, reject) {
-//     navigator.geolocation.getCurrentPosition(function(position){
-//       if(position){
-//         resolve(position.coords);
-//       } else {
-//         reject({lat: 40.5865, lng: -122.3917});
-//       }
-//     });
-//   });
-// }
 //
 // function setCenter() {
 //   let prom = getUserLocation();
@@ -32,9 +19,6 @@ const _getCoordsObj = latLng => ({
 //   }, val => (val));
 // }
 //
-
-  // const relocate = new google.maps.LatLng(centerLat, centerLng);
-  // map.setCenter(relocate);
 
 let _mapOptions = (lat, lng) => {
   lat = lat === undefined ? 37.773972 : lat
@@ -62,66 +46,59 @@ let _mapOptions = (lat, lng) => {
 class Map extends Component {
   constructor(props){
     super(props);
-
-
   }
 
   componentWillMount(){
     this.props.requestSpots();
   }
 
-  locateSuccess(pos){
-    let lat = pos.coords.latitude;
-    let lng = pos.coords.longitude;
-
-    console.log(lat);
-    console.log(lng);
-
-    const map = this.refs.map;
-    this.map = new google.maps.Map(map, _mapOptions(lat, lng));
-    this.MarkerManager = new MarkerManager(this.map, this._handleMarkerClick.bind(this));
-
-    if (this.props.singleBench) {
-      //FIX currently unused
-      this.props.fetchSpot(this.props.spotId);
-    } else {
-      this._registerListeners();
-      this.MarkerManager.updateMarkers(this.props.spots);
-    }
-  }
-
-  locateError(e){
-    console.log(e);
-    const map = this.refs.map;
-    this.map = new google.maps.Map(map, _mapOptions());
-    this.MarkerManager = new MarkerManager(this.map, this._handleMarkerClick.bind(this));
-
-    if (this.props.singleBench) {
-      //FIX currently unused
-      this.props.fetchSpot(this.props.spotId);
-    } else {
-      this._registerListeners();
-      this.MarkerManager.updateMarkers(this.props.spots);
-    }
-  }
-
-  componentDidMount() {
+  getUserLocation(){
     let geoOptions = {
         enableHighAccuracy: true,
         maximumAge        : 30000,
         timeout           : 27000
       };
 
+    return new Promise((resolve, reject) => {
+      navigator.geolocation.getCurrentPosition(position => {
+        if(position){
+          resolve(position.coords);
+        } else {
+          reject(position);
+        }
+      });
+    });
+  }
 
-    const watchId = navigator.geolocation.watchPosition(
-      this.locateSuccess.bind(this),
-      this.locateError.bind(this),
-      geoOptions
-    )
+  componentDidMount() {
+    let location = {latitude: 40.5865, longitude: -122.3917};
+    let locP = this.getUserLocation();
+
+    locP.then(res => {
+          location = res;
+          console.log(location);
+        })
+        .then(() =>{
+          console.log("in done");
+          const map = this.refs.map;
+          this.map = new google.maps.Map(map, _mapOptions(location.latitude, location.longitude));
+          this.MarkerManager = new MarkerManager(this.map, this._handleMarkerClick.bind(this));
+
+          if (this.props.singleBench) {
+            //FIX currently unused
+            this.props.fetchSpot(this.props.spotId);
+          } else {
+            this._registerListeners();
+            this.MarkerManager.updateMarkers(this.props.spots);
+          }
+        })
+        .catch(err => {
+          console.log(err);
+        });
   }
 
   componentWillUnmount(){
-    navigator.geolocation.clearWatch(watchID);
+    navigator.geolocation.clearWatch(watchId);
   }
 
   componentDidUpdate() {
