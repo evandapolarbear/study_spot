@@ -20,6 +20,7 @@ const SessionReducer = (state = _default, action) => {
       const currentSpot = action.data;
       return merge({}, state, { currentSpot });
     case SET_CURRENT_SPOT:
+      console.log(action.data);
       return merge({}, state, {currentSpot: action.data});
     default:
       return state;

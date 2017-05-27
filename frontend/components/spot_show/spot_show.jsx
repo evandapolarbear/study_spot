@@ -22,8 +22,8 @@ class SpotShow extends React.Component {
 
   checkForCurrentSpot(){
     const spot = this.props.currentSpot;
-    const id = this.props.currentSpot.id;
-    const deleteSpot = this.props.deleteSpot;
+    // const id = this.props.currentSpot.id;
+    // const deleteSpot = this.props.deleteSpot;
 
     if (spot !== null){
       return (

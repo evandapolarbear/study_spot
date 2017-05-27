@@ -20,7 +20,9 @@ class Api::SpotsController < ApplicationController
 
     flash[:success] = "User deleted"
 
+    spots = bounds ? Spot.in_bounds(bounds) : Spot.all
     @spots = spots.includes(:reviews, :favorite_users)
+
     render :index
   end
 
