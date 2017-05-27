@@ -2,9 +2,12 @@
 //React
 import React from 'react';
 import ReactDOM from 'react-dom';
+
 //Components
 import Root from './components/root';
 import configureStore from './store/store';
+
+import { deleteSpot, createSpot} from './util/spot_api_util';
 
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -16,6 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
     store = configureStore();
   }
 
+  window.deleteSpot = deleteSpot;
   window.store = store;
 
   const root = document.getElementById('root');

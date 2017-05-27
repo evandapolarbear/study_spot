@@ -1,12 +1,3 @@
-// export const fetchSpots = (filters, success, error) => {
-//   $.ajax({
-//     method: 'GET',
-//     url: 'api/spots',
-//     data: filters,
-//     success
-//   });
-// };
-
 export const fetchSpots = (success, error) => {
   $.ajax({
     method: 'GET',
@@ -38,6 +29,15 @@ export const createSpot = (spot, success, error) => {
     method: 'POST',
     url: 'api/spots',
     data: spot,
+    success,
+    error
+  });
+};
+
+export const deleteSpot = (spotId, success, error) => {
+  $.ajax({
+    method: 'DELETE',
+    url: `api/spots/${spotId}`,
     success,
     error
   });

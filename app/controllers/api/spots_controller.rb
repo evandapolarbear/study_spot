@@ -15,6 +15,15 @@ class Api::SpotsController < ApplicationController
     render :show
   end
 
+  def destroy
+    Spot.find(params[:id]).destroy
+
+    flash[:success] = "User deleted"
+
+    @spots = spots.includes(:reviews, :favorite_users)
+    render :index
+  end
+
   private
 
  #FIX spot_params

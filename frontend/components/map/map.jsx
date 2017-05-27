@@ -37,9 +37,6 @@ class Map extends Component {
   constructor(props){
     super(props);
 
-    this.state = {
-      watchId: null,
-    }
   }
 
   componentWillMount(){
@@ -54,8 +51,7 @@ class Map extends Component {
       };
 
     return new Promise((resolve, reject) => {
-      let watchId = navigator.geolocation.getCurrentPosition(position => {
-        this.setState({watchId});
+      navigator.geolocation.getCurrentPosition(position => {
 
         if(position){
           resolve(position.coords);
@@ -74,7 +70,6 @@ class Map extends Component {
           location = res;
         })
         .then(() =>{
-          console.log("in done");
           const map = this.refs.map;
           this.map = new google.maps.Map(map, _mapOptions(location.latitude, location.longitude));
           this.MarkerManager = new MarkerManager(this.map, this._handleMarkerClick.bind(this));
@@ -90,10 +85,6 @@ class Map extends Component {
         .catch(err => {
           console.log(err);
         });
-  }
-
-  componentWillUnmount(){
-    navigator.geolocation.clearWatch(this.state.watchId);
   }
 
   componentDidUpdate() {

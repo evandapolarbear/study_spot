@@ -22,6 +22,9 @@ class SpotShow extends React.Component {
 
   checkForCurrentSpot(){
     const spot = this.props.currentSpot;
+    const id = this.props.currentSpot.id;
+    const deleteSpot = this.props.deleteSpot;
+
     if (spot !== null){
       return (
         <div>
@@ -31,6 +34,10 @@ class SpotShow extends React.Component {
           <h3>Plugs: {this.renderYesNo(spot.plugs)}</h3>
           <h3>Coffee: {this.renderYesNo(spot.coffee)}</h3>
           <h3>Bar: {this.cap(spot.bar)}</h3>
+          <div>
+            <button>Edit</button>
+            <button>Delete</button>
+          </div>
         </div>
       );
     } else {
