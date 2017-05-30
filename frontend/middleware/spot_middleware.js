@@ -17,6 +17,8 @@ export default ({getState, dispatch}) => next => action => {
     dispatch(receiveSpots(spots));
   };
 
+
+
   const errorCallback = error => {
     console.log(error.statusText);
   };
@@ -29,7 +31,7 @@ export default ({getState, dispatch}) => next => action => {
     case REQUEST_SPOTS:
       fetchSpots(successRequestSpots, errorCallback);
     case DELETE_SPOT:
-      deleteSpot(action.data, successCreateCallback, errorCallback);
+      deleteSpot(action.data, successRequestSpots, errorCallback);
     default:
       return next(action);
   }
