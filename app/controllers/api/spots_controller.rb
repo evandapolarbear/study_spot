@@ -24,6 +24,9 @@ class Api::SpotsController < ApplicationController
     @spots = spots.includes(:reviews, :favorite_users)
 
     render :index
+
+    # @spot = nil
+    # render :show
   end
 
   private

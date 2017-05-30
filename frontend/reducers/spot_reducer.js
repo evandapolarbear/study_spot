@@ -7,7 +7,7 @@ const _default = Object.freeze({
   currentSpot: null
 });
 
-const SessionReducer = (state = _default, action) => {
+const SpotReducer = (state = _default, action) => {
   Object.freeze(state);
 
   switch(action.type) {
@@ -20,11 +20,10 @@ const SessionReducer = (state = _default, action) => {
       const currentSpot = action.data;
       return merge({}, state, { currentSpot });
     case SET_CURRENT_SPOT:
-      console.log(action.data);
       return merge({}, state, {currentSpot: action.data});
     default:
       return state;
   }
 };
 
-export default SessionReducer;
+export default SpotReducer;

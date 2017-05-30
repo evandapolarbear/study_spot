@@ -1,8 +1,8 @@
 import { connect } from 'react-redux';
 
 import SpotShow from './spot_show';
-import { updateFilter } from '../../actions/filter_actions'; //for example
-// import { deleteSpot } from '../../actions/spot_actions'; //for example
+import { updateFilter } from '../../actions/filter_actions';
+import { deleteSpot, setCurrentSpot } from '../../actions/spot_actions';
 
 const mapStateToProps = state => ({
   spots: state.spots,
@@ -11,7 +11,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   updateFilter: (filter, value) => dispatch(updateFilter(filter, value)),
-  // deleteSpot: id => dispatch(deleteSpot(id)),
+  deleteSpot: id => dispatch(deleteSpot(id)),
+  setCurrentSpot: spot => dispatch(setCurrentSpot(spot))
 });
 
 export default connect (

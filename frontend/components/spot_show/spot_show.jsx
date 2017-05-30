@@ -20,10 +20,15 @@ class SpotShow extends React.Component {
     return str[0].toUpperCase() + str.slice(1);
   }
 
+  delete(id){
+    console.log(this.props);
+    this.props.deleteSpot(id);
+    this.props.setCurrentSpot(null);
+    console.log(this.props);
+  }
+
   checkForCurrentSpot(){
     const spot = this.props.currentSpot;
-    // const id = this.props.currentSpot.id;
-    // const deleteSpot = this.props.deleteSpot;
 
     if (spot !== null){
       return (
@@ -36,7 +41,9 @@ class SpotShow extends React.Component {
           <h3>Bar: {this.cap(spot.bar)}</h3>
           <div>
             <button>Edit</button>
-            <button>Delete</button>
+            <button onClick={() => this.delete(spot.id)}>
+              Delete
+            </button>
           </div>
         </div>
       );
