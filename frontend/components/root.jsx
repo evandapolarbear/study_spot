@@ -10,13 +10,8 @@ import SpotFormContainer from './spot_form/spot_form_container';
 import SpotShowContainer from './spot_show/spot_show_container';
 
 import { receiveErrors } from '../actions/session_actions';
-
-//heroku dyno cheat
-const http = require('http');
-setInterval(() => {
-  http.get("https://freewifistudyspots.herokuapp.com/");
-}, 300000);
-
+import ReactGA from 'react-ga';
+ReactGA.initialize('UA-100093209-1');
 
 
 const Root = ({ store }) => {
@@ -35,9 +30,13 @@ const Root = ({ store }) => {
     }
   };
 
+  const fireTracking = () => {
+    ReactGA.pageview(window.location.hash);
+  }
+
   return (
     <Provider store={store}>
-      <Router history={hashHistory}>
+      <Router onUpdate={fireTracking} history={hashHistory}>
         <Route path="/" component={MainContainer}>
           <Route path="/login" component={SessionFormContainer} onEnter={_redirectIfLoggedIn} />
           <Route path="/signup" component={SessionFormContainer} onEnter={_redirectIfLoggedIn} />
