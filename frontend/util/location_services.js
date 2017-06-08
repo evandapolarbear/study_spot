@@ -1,4 +1,4 @@
-export const getUserLocationSecure = () =>  {
+export const getLocationByHTTPS = () =>  {
   let geoOptions = {
       enableHighAccuracy: true,
       maximumAge        : 30000,
@@ -15,4 +15,19 @@ export const getUserLocationSecure = () =>  {
       }
     });
   });
+}
+
+export const getLocationByIp = () => {
+  return new Promise((resolve, reject) => {
+    $.getJSON("http://ip-api.com/json", data => {
+      let latitude = data.lat;
+      let longitude = data.lon;
+
+      if (latitude && longitude) {
+        resolve({latitude, longitude})
+      } else {
+        reject(data)
+      }
+    });
+  })
 }

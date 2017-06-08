@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ReactDom from 'react-dom';
 import { withRouter } from 'react-router';
+import {getLocationByHTTPS, getLocationByIp} from '../../util/location_services'
 
 import MarkerManager from '../../util/marker_manager';
 import SpotFormContainer from '../spot_form/spot_form_container';
@@ -57,6 +58,11 @@ class Map extends Component {
      this._registerListeners();
      this.MarkerManager.updateMarkers(this.props.spots);
     }
+
+    
+
+
+
 
 
 
