@@ -3,7 +3,6 @@ class Spot < ActiveRecord::Base
 
 
   has_many :comments
-  has_many :reviews
   has_many :favorites
   has_many :favorite_users,
     through: :favorites,
