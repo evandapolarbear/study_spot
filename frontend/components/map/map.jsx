@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import ReactDom from 'react-dom';
 import { withRouter } from 'react-router';
-import {getLocationByHTTPS, getLocationByIp} from '../../util/location_services'
+
+import { getLocationByHTTPS, getLocationByIp } from '../../util/location_services'
+
 
 import MarkerManager from '../../util/marker_manager';
 import SpotFormContainer from '../spot_form/spot_form_container';
@@ -32,6 +34,20 @@ let _mapOptions = (lat, lng) => {
   })
 };
 
+let _setupMap = location => {
+  const map = this.refs.map;
+  this.map = new google.maps.Map(map, _mapOptions(location.latitude, location.longitude));
+  this.MarkerManager = new MarkerManager(this.map, this._handleMarkerClick.bind(this));
+
+  if (this.props.singleBench) {
+   //FIX currently unused
+   this.props.fetchSpot(this.props.spotId);
+  } else {
+   this._registerListeners();
+   this.MarkerManager.updateMarkers(this.props.spots);
+  }
+}
+
 
 class Map extends Component {
   constructor(props){
@@ -46,7 +62,24 @@ class Map extends Component {
   componentDidMount() {
     let location = {latitude: 37.773972, longitude: -122.431297};
 
+    this._setupMap(location)
 
+    Promise.race([getLocationByIp(), getLocationByHTTPS()]).then(data => {
+      location = data;
+    }).then(() => {
+      this._setupMap(location)
+    });
+  }
+
+  componentDidUpdate() {
+    if(this.props.currentSpot){
+      this.MarkerManager.updateMarkers([this.props.spots[Object.keys(this.props.spots)[0]]]); //grabs only that one spot FIX unused
+    } else {
+      this.MarkerManager.updateMarkers(this.props.spots);
+    }
+  }
+
+  _setupMap(location) {
     const map = this.refs.map;
     this.map = new google.maps.Map(map, _mapOptions(location.latitude, location.longitude));
     this.MarkerManager = new MarkerManager(this.map, this._handleMarkerClick.bind(this));
@@ -57,44 +90,6 @@ class Map extends Component {
     } else {
      this._registerListeners();
      this.MarkerManager.updateMarkers(this.props.spots);
-    }
-
-    
-
-
-
-
-
-
-    // NOTE: will only work when getUserlocation is imported and when HTTPS enabled
-    // let locP = getUserLocation();
-    //
-    // locP.then(res => {
-    //       location = res;
-    //     })
-    //     .then(() =>{
-    //       const map = this.refs.map;
-    //       this.map = new google.maps.Map(map, _mapOptions(location.latitude, location.longitude));
-    //       this.MarkerManager = new MarkerManager(this.map, this._handleMarkerClick.bind(this));
-    //
-    //       if (this.props.singleBench) {
-    //         //FIX currently unused
-    //         this.props.fetchSpot(this.props.spotId);
-    //       } else {
-    //         this._registerListeners();
-    //         this.MarkerManager.updateMarkers(this.props.spots);
-    //       }
-    //     })
-    //     .catch(err => {
-    //       console.log(err);
-    //     });
-  }
-
-  componentDidUpdate() {
-    if(this.props.currentSpot){
-      this.MarkerManager.updateMarkers([this.props.spots[Object.keys(this.props.spots)[0]]]); //grabs only that one spot FIX unused
-    } else {
-      this.MarkerManager.updateMarkers(this.props.spots);
     }
   }
 
