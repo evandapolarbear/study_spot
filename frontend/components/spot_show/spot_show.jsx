@@ -39,7 +39,6 @@ class SpotShow extends React.Component {
           <h3>Coffee: {this.renderYesNo(spot.coffee)}</h3>
           <h3>Bar: {this.cap(spot.bar)}</h3>
           <div>
-            <button>Edit</button>
             <button onClick={() => this.delete(spot.id)}>
               Delete
             </button>

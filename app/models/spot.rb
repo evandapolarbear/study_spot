@@ -1,6 +1,8 @@
 class Spot < ActiveRecord::Base
   validates :name, :network_name, :password, :lat, :lng, presence: true
 
+
+  has_many :comments
   has_many :reviews
   has_many :favorites
   has_many :favorite_users,

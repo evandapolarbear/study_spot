@@ -31,20 +31,10 @@ export const receiveSpot = data => ({
   data
 });
 
-export const setCurrentSpot = data => {
-  console.log('setting current to: ' + data);
-  return ({
-    type: SET_CURRENT_SPOT,
-    data
-  })
-}
-
-
-
-//  ({
-//   type: SET_CURRENT_SPOT,
-//   data
-// });
+export const setCurrentSpot = data => ({
+  type: SET_CURRENT_SPOT,
+  data
+})
 
 export const createSpot = data => ({
   type: CREATE_SPOT,

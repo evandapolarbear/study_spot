@@ -9,15 +9,12 @@ import { CREATE_SPOT, REQUEST_SPOTS, DELETE_SPOT,  requestSpots, receiveSpots } 
 export default ({getState, dispatch}) => next => action => {
 
   const successCreateCallback = () => {
-    console.log('success dispatch');
     dispatch(requestSpots());
   };
 
   const successRequestSpots = spots => {
     dispatch(receiveSpots(spots));
   };
-
-
 
   const errorCallback = error => {
     console.log(error.statusText);

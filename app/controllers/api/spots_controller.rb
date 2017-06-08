@@ -19,7 +19,7 @@ class Api::SpotsController < ApplicationController
     Spot.find(params[:id]).destroy
 
     flash[:success] = "User deleted"
-
+    
     spots = bounds ? Spot.in_bounds(bounds) : Spot.all
     @spots = spots.includes(:reviews, :favorite_users)
 
