@@ -26,7 +26,6 @@ let _mapOptions = (lat, lng) => {
         featureType: "poi.park",
         elementType: "geometry",
         stylers: [{color: "#FAFFDB"}]
-
       }
     ]
   })
@@ -43,48 +42,46 @@ class Map extends Component {
     this.props.requestSpots();
   }
 
-  getUserLocation(){
-    let geoOptions = {
-        enableHighAccuracy: true,
-        maximumAge        : 30000,
-        timeout           : 27000
-      };
-
-    return new Promise((resolve, reject) => {
-      navigator.geolocation.getCurrentPosition(position => {
-
-        if(position){
-          resolve(position.coords);
-        } else {
-          reject(position);
-        }
-      });
-    });
-  }
-
   componentDidMount() {
-    let location = {latitude: 40.5865, longitude: -122.3917};
-    let locP = this.getUserLocation();
+    let location = {latitude: 37.773972, longitude: -122.431297};
 
-    locP.then(res => {
-          location = res;
-        })
-        .then(() =>{
-          const map = this.refs.map;
-          this.map = new google.maps.Map(map, _mapOptions(location.latitude, location.longitude));
-          this.MarkerManager = new MarkerManager(this.map, this._handleMarkerClick.bind(this));
 
-          if (this.props.singleBench) {
-            //FIX currently unused
-            this.props.fetchSpot(this.props.spotId);
-          } else {
-            this._registerListeners();
-            this.MarkerManager.updateMarkers(this.props.spots);
-          }
-        })
-        .catch(err => {
-          console.log(err);
-        });
+    const map = this.refs.map;
+    this.map = new google.maps.Map(map, _mapOptions(location.latitude, location.longitude));
+    this.MarkerManager = new MarkerManager(this.map, this._handleMarkerClick.bind(this));
+
+    if (this.props.singleBench) {
+     //FIX currently unused
+     this.props.fetchSpot(this.props.spotId);
+    } else {
+     this._registerListeners();
+     this.MarkerManager.updateMarkers(this.props.spots);
+    }
+
+
+
+    // NOTE: will only work when getUserlocation is imported and when HTTPS enabled
+    // let locP = getUserLocation();
+    //
+    // locP.then(res => {
+    //       location = res;
+    //     })
+    //     .then(() =>{
+    //       const map = this.refs.map;
+    //       this.map = new google.maps.Map(map, _mapOptions(location.latitude, location.longitude));
+    //       this.MarkerManager = new MarkerManager(this.map, this._handleMarkerClick.bind(this));
+    //
+    //       if (this.props.singleBench) {
+    //         //FIX currently unused
+    //         this.props.fetchSpot(this.props.spotId);
+    //       } else {
+    //         this._registerListeners();
+    //         this.MarkerManager.updateMarkers(this.props.spots);
+    //       }
+    //     })
+    //     .catch(err => {
+    //       console.log(err);
+    //     });
   }
 
   componentDidUpdate() {
