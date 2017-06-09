@@ -15,15 +15,6 @@ export const fetchSpot = (id, success) => {
   });
 };
 
-export const createReview = (review, success) => {
-  $.ajax({
-    method: 'POST',
-    url: 'api/reviews',
-    data: review,
-    success
-  });
-};
-
 export const createSpot = (spot, success, error) => {
   $.ajax({
     method: 'POST',

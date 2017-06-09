@@ -6,6 +6,8 @@ import ReactDOM from 'react-dom';
 import Root from './components/root';
 import configureStore from './store/store';
 
+import { createComment } from './util/comment_api_util'
+
 document.addEventListener('DOMContentLoaded', () => {
   let store;
   if (window.currentUser) {
@@ -14,6 +16,8 @@ document.addEventListener('DOMContentLoaded', () => {
   } else {
     store = configureStore();
   }
+
+  window.createComment = createComment;
 
   window.store = store;
 
