@@ -6,14 +6,11 @@ import { appendComment } from '../actions/spot_actions';
 export default ({getState, dispatch}) => next => action => {
 
   const successCreate = (data) => {
-    console.log("success data -> ");
-    console.log(data);
     dispatch(appendComment(data))
   }
 
   switch(action.type) {
     case CREATE_COMMENT:
-      console.log('action here');
       createComment(action.data, successCreate);
       return next(action);
     default:
