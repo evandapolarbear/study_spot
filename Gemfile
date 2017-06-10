@@ -11,6 +11,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'figaro'
 gem 'bcrypt'
 gem 'autoprefixer-rails'
+gem 'puma'
 
 group :development, :test do
   gem 'pry-rails'
