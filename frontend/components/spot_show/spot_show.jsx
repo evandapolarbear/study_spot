@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router';
+import CommentForm from '../comment_form/comment_form_container'
 
 class SpotShow extends React.Component {
   constructor(props) {
@@ -43,6 +44,7 @@ class SpotShow extends React.Component {
               Delete
             </button>
           </div>
+          < CommentForm />
         </div>
       );
     } else {
