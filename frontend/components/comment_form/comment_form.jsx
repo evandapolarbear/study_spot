@@ -8,12 +8,15 @@ class CommentForm extends React.Component {
 	}
 
   componentDidMount() {
-    console.log("hereree");
-    console.log(this.props);
-  }
+    let comment = {comment : {
+      user_id: this.props.userId,
+      spot_id: this.props.spotId,
+      body: "this is how comment should be structured"
+    }}
 
-  componentDidUpdate() {
-    console.log(this.props);
+
+		// console.log(this.props.createComment);
+    // this.props.createComment(comment);
   }
 
 	render() {

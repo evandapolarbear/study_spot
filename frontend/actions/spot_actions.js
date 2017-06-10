@@ -3,7 +3,7 @@ export const RECEIVE_SPOT = "RECEIVE_SPOT";
 export const REQUEST_SPOTS = "REQUEST_SPOTS";
 export const REQUEST_SPOT = "REQUEST_SPOT";
 export const CREATE_SPOT = "CREATE_SPOT";
-export const CREATE_REVIEW = "CREATE_REVIEW";
+export const APPEND_COMMENT = "APPEND_COMMENT";
 export const SET_CURRENT_SPOT = "SET_CURRENT_SPOT";
 export const DELETE_SPOT = "DELETE_SPOT";
 
@@ -21,9 +21,9 @@ export const receiveSpots = data => ({
   data
 });
 
-export const createReview = review => ({
-  type: CREATE_REVIEW,
-  review
+export const appendComment = comment => ({
+  type: APPEND_COMMENT,
+  comment
 });
 
 export const receiveSpot = data => ({

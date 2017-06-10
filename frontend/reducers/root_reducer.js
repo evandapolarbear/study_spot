@@ -6,7 +6,6 @@ import SpotReducer from './spot_reducer';
 
 
 const RootReducer = combineReducers({
-  comments: CommentReducer,
   session: SessionReducer,
   spots: SpotReducer,
 });
