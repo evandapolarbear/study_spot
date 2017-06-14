@@ -2,7 +2,7 @@ class Api::SpotsController < ApplicationController
   def index
     spots = bounds ? Spot.in_bounds(bounds) : Spot.all
 
-    # NOTE: add comments here so that they come down with the neccisary spots
+
     @spots = spots.includes(:comments, :favorite_users)
     render :index
   end
@@ -22,7 +22,7 @@ class Api::SpotsController < ApplicationController
     flash[:success] = "User deleted"
 
     spots = bounds ? Spot.in_bounds(bounds) : Spot.all
-    @spots = spots.includes(:reviews, :favorite_users)
+    @spots = spots.includes(:comments, :favorite_users)
 
     render :index
   end

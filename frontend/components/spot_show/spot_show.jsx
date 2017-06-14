@@ -7,6 +7,7 @@ class SpotShow extends React.Component {
     super(props);
 
     this.checkForCurrentSpot = this.checkForCurrentSpot.bind(this);
+    this.deleteCurrentSpot = this.deleteCurrentSpot.bind(this)
   }
 
   renderYesNo(bool){
@@ -21,10 +22,13 @@ class SpotShow extends React.Component {
     return str[0].toUpperCase() + str.slice(1);
   }
 
-  delete(id){
-    this.props.deleteSpot(id);
-    this.props.setCurrentSpot(null);
-    window.location.reload(true)
+  deleteCurrentSpot(id){
+    const spot = this.props.currentSpot;
+    if (spot) {
+      this.props.deleteSpot(spot.id);
+      this.props.setCurrentSpot(null);
+      window.location.reload(true)
+    }
   }
 
   checkForCurrentSpot(){
@@ -40,7 +44,7 @@ class SpotShow extends React.Component {
           <h3>Coffee: {this.renderYesNo(spot.coffee)}</h3>
           <h3>Bar: {this.cap(spot.bar)}</h3>
           <div>
-            <button onClick={() => this.delete(spot.id)}>
+            <button onClick={this.deleteCurrentSpot}>
               Delete
             </button>
           </div>

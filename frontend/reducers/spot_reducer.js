@@ -14,7 +14,7 @@ const SpotReducer = (state = _default, action) => {
     case RECEIVE_SPOTS:
       const spots = action.data;
       return merge({}, state,
-        {spots}
+        { spots }
       );
     case RECEIVE_SPOT:
       const currentSpot = action.data;
