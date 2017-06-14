@@ -27,8 +27,10 @@ export default ({getState, dispatch}) => next => action => {
       return next(action);
     case REQUEST_SPOTS:
       fetchSpots(successRequestSpots, errorCallback);
+      return next(action);
     case DELETE_SPOT:
       deleteSpot(action.data, successRequestSpots, errorCallback);
+      return next(action);
     default:
       return next(action);
   }
