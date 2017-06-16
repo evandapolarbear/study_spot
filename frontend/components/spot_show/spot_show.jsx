@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router';
-import CommentForm from '../comment_form/comment_form_container'
+
 
 class SpotShow extends React.Component {
   constructor(props) {
@@ -49,6 +49,7 @@ class SpotShow extends React.Component {
             </button>
           </div>
           <Link to={`/spot/${this.props.currentSpot.id}/comment/new`}>Create Comment</Link>
+          <Link to={`/spot/${this.props.currentSpot.id}/comments`}>Show Comments</Link>
         </div>
       );
     } else {

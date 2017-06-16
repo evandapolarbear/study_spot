@@ -4,7 +4,8 @@ import { Provider, connect } from 'react-redux';
 import { Router, Route, IndexRoute, hashHistory } from 'react-router';
 
 import App from './app';
-import CommentFormContainer from './comment_form/comment_form_container'
+import CommentFormContainer from './comment_form/comment_form_container';
+import CommentShowContainer from './comment_show/comment_show_container';
 import MainContainer from './main/main_container';
 import SessionFormContainer from './session_form/session_form_container';
 import SpotFormContainer from './spot_form/spot_form_container';
@@ -47,6 +48,7 @@ const Root = ({ store }) => {
           <Route path="/spot/:spotId/comment/new"
           component={CommentFormContainer}
           onEnter={_ensureLoggedIn}/>
+          <Route path='spot/:spotId/comments' component={CommentShowContainer} />
         </Route>
       </Router>
     </Provider>
