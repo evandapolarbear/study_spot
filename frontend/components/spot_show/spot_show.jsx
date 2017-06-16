@@ -1,5 +1,5 @@
 import React from 'react';
-import { withRouter } from 'react-router';
+import { Link, withRouter } from 'react-router';
 import CommentForm from '../comment_form/comment_form_container'
 
 class SpotShow extends React.Component {
@@ -8,7 +8,6 @@ class SpotShow extends React.Component {
 
     this.checkForCurrentSpot = this.checkForCurrentSpot.bind(this);
     this.deleteCurrentSpot = this.deleteCurrentSpot.bind(this);
-    this.createComment = this.createComment.bind(this);
   }
 
   renderYesNo(bool){
@@ -32,11 +31,6 @@ class SpotShow extends React.Component {
     }
   }
 
-  createComment(){
-    const id = this.props.currentSpot.id;
-    this.props.router.push(`spot/${id}/comment/new`);
-  }
-
   checkForCurrentSpot(){
     const spot = this.props.currentSpot;
 
@@ -54,7 +48,7 @@ class SpotShow extends React.Component {
               Delete
             </button>
           </div>
-          <button onClick ={this.createComment}>Create Comment</button>
+          <Link to={`/spot/${this.props.currentSpot.id}/comment/new`}>Create Comment</Link>
         </div>
       );
     } else {

@@ -10,6 +10,7 @@ class CommentForm extends React.Component {
 
 		this.update = this.update.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
+		this.cancelComment = this.cancelComment.bind(this);
 	}
 
 	handleSubmit(e) {
@@ -22,13 +23,18 @@ class CommentForm extends React.Component {
       	body: this.state.body
     	}
 		}
-		
+
 		this.setState({body: ''})
 		this.props.createComment(comment)
 	}
 
 	update(e){
 		this.setState({body: e.target.value})
+	}
+
+	cancelComment(){
+		const id = this.props.spotId;
+		this.props.router.push(`spot/${id}`)
 	}
 
 	render() {
@@ -43,6 +49,7 @@ class CommentForm extends React.Component {
 						<textarea type="text" value={this.state.body} onChange={this.update}/>
 						<button onClick={this.handleSubmit}>Submit</button>
 					</label>
+					<button onClick={this.cancelComment}>Cancel</button>
 				</form>
       </div>
 		);
