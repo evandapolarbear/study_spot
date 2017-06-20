@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router';
 
+import Navbar from './nav_bar/nav_bar';
 
 class SpotShow extends React.Component {
   constructor(props) {
@@ -33,6 +34,7 @@ class SpotShow extends React.Component {
 
   checkForCurrentSpot(){
     const spot = this.props.currentSpot;
+
 
     if (spot !== null){
       return (
