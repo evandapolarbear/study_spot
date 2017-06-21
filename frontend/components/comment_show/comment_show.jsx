@@ -11,13 +11,20 @@ class CommentShow extends React.Component {
   }
 
   renderLis(){
-    this.props.comments.map(comment => {
+    if (this.props.comments.length === 0) {
+      console.log('here');
       return (
-        <li>
-          {comment.body}
-        </li>
+        <h1>No One has Commented Yet!</h1>
       )
-    })
+    } else {
+      return (
+        <ul>
+          {this.props.comments.map((comment,i) =>
+            <li key={i}>{comment.body}</li>
+          )}
+        </ul>
+      )
+    }
   }
 
   render() {
@@ -31,11 +38,7 @@ class CommentShow extends React.Component {
           commentShow={false}
           form={user}
           id={spotId}/>
-        <ul>
-          {this.props.comments.map((comment,i) =>
-            <li key={i}>{comment.body}</li>
-          )}
-        </ul>
+        {this.renderLis()}
       </div>
     )
   }
