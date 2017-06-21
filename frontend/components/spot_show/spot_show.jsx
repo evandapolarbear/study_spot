@@ -55,8 +55,6 @@ class SpotShow extends React.Component {
               Delete
             </button>
           </div>
-          <Link to={`/spot/${this.props.currentSpot.id}/comment/new`}>Create Comment</Link>
-          <Link to={`/spot/${this.props.currentSpot.id}/comments`}>Show Comments</Link>
         </div>
       );
     } else {

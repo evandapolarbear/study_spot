@@ -23,7 +23,7 @@ const NavBar = ({details, form, commentShow, id}) => {
       return (
         <Link to={`/spot/${id}/comments`}>Show Comments</Link>
       );
-    } else if(form && commentShow) {
+    } else if(form && (commentShow || details)) {
       return (
         <Link to={`/spot/${id}/comment/new`}>Create Comment</Link>
       );
