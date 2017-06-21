@@ -6,7 +6,8 @@ import { deleteSpot, setCurrentSpot } from '../../actions/spot_actions';
 
 const mapStateToProps = state => ({
   spots: state.spots,
-  currentSpot: state.spots.currentSpot
+  currentSpot: state.spots.currentSpot,
+  user: state.session.currentUser
 });
 
 const mapDispatchToProps = dispatch => ({

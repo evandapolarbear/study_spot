@@ -7,23 +7,23 @@ const NavBar = ({details, form, commentShow, id}) => {
       return (
         <Link to={`/spot/${id}`}>Details</Link>
       );
-    } else if (form) {
-      return (
-        <Link to={`/spot/${id}/comment/new`}>Create Comment</Link>
-      );
-    } else {
+    } else if (commentShow) {
       return (
         <Link to={`/spot/${id}/comments`}>Show Comments</Link>
+      );
+    } else if (form){
+      return (
+        <Link to={`/spot/${id}/comment/new`}>Create Comment</Link>
       );
     }
   }
 
   const setSecondTab = () => {
-    if (details && !form && commentShow) {
+    if (!form && commentShow) {
       return (
         <Link to={`/spot/${id}/comments`}>Show Comments</Link>
       );
-    } else if(details && form && !commentShow) {
+    } else if(form && commentShow) {
       return (
         <Link to={`/spot/${id}/comment/new`}>Create Comment</Link>
       );
@@ -34,8 +34,10 @@ const NavBar = ({details, form, commentShow, id}) => {
 
   return (
     <div>
-      {this.setFirstTab.call(this)}
-      {this.setSecondTab.call(this)}
+      {setFirstTab()}
+      {setSecondTab()}
     </div>
   )
 }
+
+export default NavBar;

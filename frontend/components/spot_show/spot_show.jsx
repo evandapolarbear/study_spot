@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router';
 
-import Navbar from './nav_bar/nav_bar';
+import NavBar from '../nav_bar/nav_bar';
 
 class SpotShow extends React.Component {
   constructor(props) {
@@ -34,11 +34,16 @@ class SpotShow extends React.Component {
 
   checkForCurrentSpot(){
     const spot = this.props.currentSpot;
-
+    const formBool = this.props.user !== null ? true : false;
 
     if (spot !== null){
       return (
         <div>
+          <NavBar
+            details={false}
+            form={formBool}
+            commentShow={true}
+            id={spot.id}/>
           <h1>Spot: {spot.name}</h1>
           <h2>Network: {spot.network_name}</h2>
           <h2>Password: {spot.password}</h2>
