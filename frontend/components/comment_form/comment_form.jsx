@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router';
 
+import NavBar from '../nav_bar/nav_bar'
+
 class CommentForm extends React.Component {
 	constructor(props) {
 		super(props);
@@ -43,6 +45,11 @@ class CommentForm extends React.Component {
 
 		return (
       <div>
+				<NavBar
+					form={false}
+					details={true}
+					commentShow={true}
+					id={this.props.spotId}/>
 				<form>
 					<label>
 						Comment on {spot} as {user}
